@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Home from "./screens/Home";
+import Login from "./screens/Login.jsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "../node_modules/bootstrap-dark-5/dist/css/bootstrap-dark.min.css";
+import "../node_modules/bootstrap/dist/js/bootstrap.bundle.js";
+import Signup from "./screens/Signup.jsx";
+import { CartProvider } from "./components/ContextReducer.jsx";
+import MyOrder from "./screens/MyOrder.jsx";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<CartProvider>
+			<Router>
+				<div>
+					<Routes>
+						<Route exact path="/" element={<Home />} />
+						<Route exact path="/login" element={<Login />} />
+						<Route exact path="/createUser" element={<Signup />} />
+						<Route exact path="/myOrder" element={<MyOrder />} />
+					</Routes>
+				</div>
+			</Router>
+		</CartProvider>
+	);
 }
 
 export default App;
